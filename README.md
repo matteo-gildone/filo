@@ -1,4 +1,4 @@
-# # filo
+# filo
 
 Follow a design token back to where it came from.
 
@@ -50,7 +50,7 @@ Results go to stdout, diagnostics to stderr.
 
 filo targets the stable **DTCG 2025.10** format only. The draft format is not supported.
 
-Layering is modelled on the DTCG Resolver module (ordered sets) rather than an invented config format.
+Layering uses filo's own simple ordered-layer config, informed by DTCG Resolver concepts. It is not an implementation of the Resolver module. Unsupported features (such as `$extends` and `$ref`) are reported as errors rather than ignored. filo does not claim full DTCG 2025.10 conformance.
 
 ### Non-goals (for now)
 
@@ -61,7 +61,7 @@ Layering is modelled on the DTCG Resolver module (ordered sets) rather than an i
 
 ## Roadmap
 
-Detail lives in [PLAN.md](PLAN.md). This is the summary.
+Detail lives in [docs/design.md](docs/design.md) and [CARDS.md](CARDS.md). This is the summary.
 
 - [ ] **v0.1.0: diagnostics.** Ordered parser, token model, alias resolution with cycle detection, layers with collision rules and provenance, `check` and `explain`.
 - [ ] **Gate.** Run against real-world token sets for a few weeks. Continue only if it surfaces real problems.
