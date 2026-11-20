@@ -1,0 +1,22 @@
+{
+  "color": {
+    "$type": "color",
+    "accent": {
+      "$root": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.2, 0.4, 0.8]
+        }
+      },
+      "light": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [0.7, 0.8, 1]
+        }
+      }
+    },
+    "brand": {
+      "$value": "{color.accent.$root}"
+    }
+  }
+}

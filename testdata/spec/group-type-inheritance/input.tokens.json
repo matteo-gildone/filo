@@ -1,0 +1,23 @@
+{
+  "spacing": {
+    "$type": "dimension",
+    "small": {
+      "$value": { "value": 4, "unit": "px" }
+    },
+    "compact": {
+      "small": {
+        "$value": { "value": 2, "unit": "px" }
+      }
+    },
+    "scale": {
+      "$type": "number",
+      "factor": {
+        "$value": 1.5
+      }
+    },
+    "label": {
+      "$type": "string",
+      "$value": "compact"
+    }
+  }
+}
