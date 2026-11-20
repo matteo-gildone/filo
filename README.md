@@ -2,19 +2,23 @@
 
 Follow a design token back to where it came from.
 
-filo loads [W3C Design Tokens (DTCG) 2025.10](https://www.designtokens.org) files in a defined order, resolves aliases, reports collisions and cycles, and tells you which file and layer produced any value.
+filo loads [W3C Design Tokens (DTCG) 2025.10](https://www.designtokens.org) files in a defined order, resolves aliases,
+reports collisions and cycles, and tells you which file and layer produced any value.
 
-> **Status: pre-alpha. Nothing below is implemented yet.** Commands shown under "Planned usage" describe the intended interface and will change.
+> **Status: pre-alpha. Nothing below is implemented yet.** Commands shown under "Planned usage" describe the intended
+> interface and will change.
 
 ## Why
 
-When token files are merged from several sources, the result depends on glob and file order. Overrides are silent, so you find out about a collision when the output looks wrong, and then you have to work out which file won.
+When token files are merged from several sources, the result depends on glob and file order. Overrides are silent, so
+you find out about a collision when the output looks wrong, and then you have to work out which file won.
 
 filo makes that visible:
 
 - **Explicit, ordered layers.** You declare the order. Within a layer, files load in a documented, deterministic order.
 - **Provenance on every token.** Each value records its `file:line`, its layer, and every value it replaced.
-- **Loud overrides.** An override is a finding unless the layer is marked as allowed to override. A group colliding with a leaf token at the same path is always an error.
+- **Loud overrides.** An override is a finding unless the layer is marked as allowed to override. A group colliding with
+  a leaf token at the same path is always an error.
 - **Deterministic output.** Sorted and stable, so diffs are meaningful.
 
 ## Planned usage
@@ -38,11 +42,11 @@ color.brand.primary = #0a5cff
 
 ### Exit codes
 
-| Code | Meaning |
-|------|---------|
-| 0 | OK |
-| 1 | Findings (collisions, cycles, missing alias targets) |
-| 2 | Usage or I/O error |
+| Code | Meaning                                              |
+|------|------------------------------------------------------|
+| 0    | OK                                                   |
+| 1    | Findings (collisions, cycles, missing alias targets) |
+| 2    | Usage or I/O error                                   |
 
 Results go to stdout, diagnostics to stderr.
 
@@ -50,7 +54,9 @@ Results go to stdout, diagnostics to stderr.
 
 filo targets the stable **DTCG 2025.10** format only. The draft format is not supported.
 
-Layering uses filo's own simple ordered-layer config, informed by DTCG Resolver concepts. It is not an implementation of the Resolver module. Unsupported features (such as `$extends` and `$ref`) are reported as errors rather than ignored. filo does not claim full DTCG 2025.10 conformance.
+Layering uses filo's own simple ordered-layer config, informed by DTCG Resolver concepts. It is not an implementation of
+the Resolver module. Unsupported features (such as `$extends` and `$ref`) are reported as errors rather than ignored.
+filo does not claim full DTCG 2025.10 conformance.
 
 ### Non-goals (for now)
 
@@ -61,12 +67,15 @@ Layering uses filo's own simple ordered-layer config, informed by DTCG Resolver 
 
 ## Roadmap
 
-Detail lives in [docs/design.md](docs/design.md) and [CARDS.md](CARDS.md). This is the summary.
+Detail lives in [docs/design.md](docs/design.md) and [Issues](https://github.com/matteo-gildone/filo/issues). This is the summary.
 
-- [ ] **v0.1.0: diagnostics.** Ordered parser, token model, alias resolution with cycle detection, layers with collision rules and provenance, `check` and `explain`.
+- [ ] **v0.1.0: diagnostics.** Ordered parser, token model, alias resolution with cycle detection, layers with collision
+  rules and provenance, `check` and `explain`.
 - [ ] **Gate.** Run against real-world token sets for a few weeks. Continue only if it surfaces real problems.
-- [ ] **v0.2: Sass output.** `build` command, Sass variables with preserved references, structured colour and dimension formatting, validated against Style Dictionary output.
-- [ ] **v0.3: integration.** Snapshot support with [tokensnap](https://codeberg.org/), CI recipes, a parallel-run mode against an existing Style Dictionary pipeline.
+- [ ] **v0.2: Sass output.** `build` command, Sass variables with preserved references, structured colour and dimension
+  formatting, validated against Style Dictionary output.
+- [ ] **v0.3: integration.** Snapshot support with [tokensnap](https://codeberg.org/), CI recipes, a parallel-run mode
+  against an existing Style Dictionary pipeline.
 - [ ] **Later, if justified:** `$ref` and `$extends`, further output formats, Style Dictionary to DTCG migration helper.
 
 ## Install
